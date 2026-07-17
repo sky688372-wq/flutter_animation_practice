@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+
+class Ex2 extends StatefulWidget {
+  const Ex2({super.key});
+
+  @override
+  State<Ex2> createState() => _Ex2State();
+}
+
+class _Ex2State extends State<Ex2> {
+  bool _isShow = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(centerTitle: true, title: Text('애니 2 · AnimatedOpacity')),
+
+      //메인 콘텐츠 시작 부분
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            AnimatedOpacity(
+              opacity: _isShow ? 1 : 0,
+              duration: Duration(milliseconds: 3000),
+              child: Image.asset(
+                "assets/images/pin_and_jake.png",
+                width: 500,
+                height: 500,
+              ),
+            ),
+
+            SizedBox(height: 30),
+
+            ElevatedButton(
+              onPressed: () => setState(() {
+                _isShow = !_isShow;
+              }),
+              child: Text((_isShow ? "핀과제이크의 어드벤처 타임" : "내 최애 미애니는...")),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
